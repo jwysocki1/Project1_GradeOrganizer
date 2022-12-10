@@ -71,7 +71,7 @@ class GUI:
         info = self.inputentry.get().split()
         score = self.gradeentry.get()
         info.append(score)
-        print(info)
+
         if len(info) == 3:
             try:
                 name = info[0] + ' ' + info[1]
@@ -127,5 +127,3 @@ class GUI:
                 writer.writerow(n)
 
         self.errorlabel.config(text='Spreadsheet created!')
-
-        #print(GUI.Book)
