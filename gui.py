@@ -23,10 +23,10 @@ class GUI:
         self.submitframe = Frame(self.window)
         self.submitbutton = Button(self.submitframe, text='Enter', command=self.addstudent)
         self.undobutton = Button(self.submitframe, text='Undo', command=self.undostudent)
-        self.errorlabel = Label(self.submitframe,text='Press "Enter" to add student.', width=50)
+        self.errorlabel = Label(self.submitframe,text='Press "Enter" to add student.', width=55)
         self.undobutton.pack(side='left',padx=10)
         self.submitbutton.pack(side='left',padx=20)             #Undo, Enter, and error label and buttons
-        self.errorlabel.pack(side='left',padx=10)
+        self.errorlabel.pack(side='left',padx=7)
         self.submitframe.pack(anchor='w', pady=15)
 
         self.methodframe = Frame(self.window)
@@ -63,7 +63,10 @@ class GUI:
         '''Deletes the last entry entered unless the export/organize button
         was pressed since the last entry.'''
         if len(GUI.Book) >= 1:
-            GUI.Book.pop()
+            lost_student = GUI.Book.pop()
+            self.errorlabel.config(text=f"Deleted student: {lost_student[0]}")
+        else:
+            self.errorlabel.config(text='No students to delete.')
 
     def addstudent(self, *args):
         '''Determines in user input is valid, creates a list to append,
